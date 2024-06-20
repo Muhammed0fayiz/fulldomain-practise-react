@@ -1,11 +1,10 @@
 import React from 'react'
-import Parentcontext from './UseContest/Parentcontext'
+import Useparent from './Usecallback/Useparent'
 
-import UseReducer from './UseReducer/UseReducer'
 const App = () => {
   return (
     <div>
-<UseReducer/>
+      <Useparent/>
     </div>
   )
 }
