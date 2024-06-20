@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const CounterApp = () => {
-    const [value,setvalue] =useState(0)
+    const [value,setvalue] =useState(10)
     const inc=()=>{
         setvalue((value)=>value+1)
     }
