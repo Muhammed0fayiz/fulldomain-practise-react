@@ -1,49 +1,20 @@
-import React, { useState } from 'react';
+import React, { createContext, useContext } from 'react';
 
-const Todolist = () => {
-    const [data, setData] = useState([]);
-    const [value, setValue] = useState('');
+// Step 1: Create a context
+const MyContext = createContext();
 
-    const deleteItem = (index) => {
-        const newData = [...data];
-        newData.splice(index, 1);
-        setData(newData);
-    };
-
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    };
-
-    const addElement = () => {
-        if (value.trim() !== '') { // Ensure value is not empty
-            const newData = [...data, { name: value }];
-            setData(newData);
-            setValue(''); // Clear input after adding element
-        }
-    };
-
-    const edit = (index) => {
-        const newData = [...data];
-        if (value.trim() !== '') { // Ensure value is not empty
-            newData[index] = { name: value };
-            setData(newData);
-            setValue(''); // Clear input after editing
-        }
-    };
-
-    return (
-        <div>
-            <input type="text" placeholder='add item' value={value} onChange={handleChange} />
-            <button onClick={addElement}>Add Element</button>
-            {data.map((item, index) => (
-                <div key={index}>
-                    <h1>{item.name}</h1>
-                    <button onClick={() => deleteItem(index)}>Delete</button>
-                    <button onClick={() => edit(index)}>Edit</button>
-                </div>
-            ))}
-        </div>
-    );
+// Step 2: Provide a context value
+const ParentComponent = () => {
+  const contextValue = 'Hello from Context';
+  return (
+    <MyContext.Provider value={contextValue}>
+      <ChildComponent />
+    </MyContext.Provider>
+  );
 };
 
-export default Todolist;
+// Step 3: Consume the context value using useContext
+const ChildComponent = () => {
+  const value = useContext(MyContext);
+  return <div>{value}</div>;
+};

@@ -1,11 +1,11 @@
 import React from 'react'
+import Parentcontext from './UseContest/Parentcontext'
 
-import Todu from './UseState/Todu'
 
 const App = () => {
   return (
     <div>
-<Todu/>
+<Parentcontext/>
     </div>
   )
 }
