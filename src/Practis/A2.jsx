@@ -1,12 +1,13 @@
 import React from 'react'
 
-const A2 = ({b}) => {
-    console.log('chile')
+const A2 = ({val,fun}) => {
+  console.log('a2')
   return (
     <div>
-      <p>chile{b}</p>
+      <h1>{val}</h1>
+      <button onClick={fun}>ondc</button>
     </div>
   )
 }
 
-export default A2
+export default React.memo(A2)
