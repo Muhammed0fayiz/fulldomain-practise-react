@@ -1,28 +1,28 @@
 import React, { useCallback, useState } from 'react';
-import Usechild from './Usechild';
 import Titles from './Titles';
+import Usechild from './Usechild';
 
 const Useparent = () => {
-    console.log('parent');
-    const [state, setState] = useState(0); // State for parent component
-    const [value, setValue] = useState(10); // State for child component value
+  console.log('parent');
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
 
-    const updatestate = useCallback(() => {
-        setState(state+1); // Increment state by 1
-    }, [state]);
+  const inc1 = useCallback(() => {
+    setCount1(count1+ 1);
+  }, [count1]);
 
-    const updatevalue = useCallback(() => {
-        setValue(value+1); // Increment value by 1
-    }, [value]);
+  const inc2 = useCallback(() => {
+    setCount2(count2 + 1);
+  }, [count2]);
 
-    return (
-        <div>
-            <h1>{value}</h1>
-            <button onClick={updatevalue}>Update Value</button>
-            <Usechild val={state} fun={updatestate} />
-            <Titles />
-        </div>
-    );
+  return (
+    <div>
+      <Titles />
+      <button onClick={inc1}>count1</button>
+      <h1>{count1}</h1>
+      <Usechild val={count2} fun={inc2} />
+    </div>
+  );
 };
 
-export default Useparent;
+export default React.memo(Useparent);

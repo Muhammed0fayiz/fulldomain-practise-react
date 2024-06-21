@@ -10,4 +10,4 @@ const Titles = () => {
     );
 };
 
-export default Titles;
+export default React.memo(Titles);

@@ -1,19 +1,13 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
-const Usechild = React.memo((props) => {
-    console.log('child');
+const Usechild = ({ val, fun }) => {
+  console.log('child');
+  return (
+    <div>
+      <h1>{val}</h1>
+      <button onClick={fun}>click child</button>
+    </div>
+  );
+};
 
-    const handleClick = useCallback(() => {
-        props.fun(); // Call parent callback function
-    }, [props.fun]);
-
-    return (
-        <div>
-            <p>Child Component</p>
-            <p>{props.val}</p>
-            <button onClick={handleClick}>Update Parent State</button>
-        </div>
-    );
-});
-
-export default Usechild;
+export default React.memo(Usechild);
